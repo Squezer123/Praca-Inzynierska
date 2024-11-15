@@ -1,6 +1,6 @@
-import { Vector2 } from "./Vector2.js";
+import { Vector2, GameObject } from "./Exporter.js";
 
-export class Sprite {
+export class Sprite extends GameObject{
     constructor({
         resource,
         frameSize,
@@ -9,16 +9,19 @@ export class Sprite {
         frame,
         scale,
         position,
+        animations,
     }) {
-       this.resource = resource;
-       this.frameSize = frameSize ?? new Vector2(16,16);
-       this.hFrames = hFrames ?? 1;
-       this.vFrames = vFrames ?? 1;
-       this.frame = frame ?? 0;
-       this.frameMap = new Map();
-       this.scale = scale ?? 1;
-       this.position = position ?? new Vector2(0,0);
-       this.buildFrameMap();
+        super({});
+        this.resource = resource;
+        this.frameSize = frameSize ?? new Vector2(16,16);
+        this.hFrames = hFrames ?? 1;
+        this.vFrames = vFrames ?? 1;
+        this.frame = frame ?? 0;
+        this.frameMap = new Map();
+        this.scale = scale ?? 1;
+        this.position = position ?? new Vector2(0,0);
+        this.animations = animations ?? null;
+        this.buildFrameMap();
     }
 
     buildFrameMap(){
@@ -35,10 +38,14 @@ export class Sprite {
         }
     }
 
+    step(delta){
+        if (!this.animations) {return;}
+        this.animations.step(delta);
+        this.frame = this.animations.frame;
+    }
+
     drawImage(ctx,x,y){
-        if (!this.resource.isLoaded) {
-            return;
-        }
+        if (!this.resource.isLoaded) {return;}
 
         let frameCoordX = 0;
         let frameCoordY = 0;

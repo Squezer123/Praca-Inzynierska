@@ -40,9 +40,7 @@ export class GameLoop{
     }
 
     stop(){
-        if(this.rafId) {
-            cancelAnimationFrame(this.rafId);
-        }
+        if(this.rafId){cancelAnimationFrame(this.rafId);}
         this.isRunning = false;
     }
 }

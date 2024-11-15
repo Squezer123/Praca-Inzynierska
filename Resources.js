@@ -4,7 +4,10 @@ class Resources{
             sky: "/assets/sky.png",
             ground: "/assets/ground.png",
             hero: "/assets/hero.png",
-            shadow: "/assets/shadow.png"
+            shadow: "/assets/shadow.png",
+            rod: "/assets/rod.png",
+            test: "/assets/test.png",
+            skeleton: "/assets/skeleton.png",
         };
 
         this.images = {};
@@ -16,9 +19,7 @@ class Resources{
                 image: img,
                 isLoaded: false
             }
-            img.onload = () => {
-                this.images[key].isLoaded = true;
-            }
+            img.onload = () => {this.images[key].isLoaded = true;}
         })
     }
 }
