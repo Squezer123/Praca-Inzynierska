@@ -5,6 +5,7 @@ export class GameObject {
         this.position = position ?? new Vector2(0,0);
         this.children = [];
         this.parent = null;
+        this.hasBeenCalled = false;
     }
     
     stepEntry(delta, root){
@@ -12,7 +13,16 @@ export class GameObject {
             child.stepEntry(delta, root);
         });
 
+        if(!this.hasBeenCalled){
+            this.hasBeenCalled = true;
+            this.ready();
+        }
+
         this.step(delta, root);
+    }
+
+    ready(){
+
     }
 
     step(_delta){
@@ -47,7 +57,6 @@ export class GameObject {
     }
 
     removeChild(gameObject){
-        console.log("removeChild", gameObject);
         events.unsubscribe(gameObject);
         this.children = this.children.filter(child => child !== gameObject);
     }

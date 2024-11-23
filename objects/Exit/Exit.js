@@ -1,30 +1,17 @@
-import { 
-    GameObject, 
-    Sprite, 
-    Vector2, 
-    resources,
-    events,
-    Polygon
-} from "../../Exporter.js";
+import {events, GameObject, Polygon, resources, Sprite, Vector2} from "../../Exporter.js";
 
-export class Rod extends GameObject{
-    constructor(x,y){
+export class Exit extends GameObject{
+    constructor(x,y) {
         super({
-            position: new Vector2(x,y)  
+            position: new Vector2(x,y)
         });
-        const sprite = new Sprite({
-            resource: resources.images.rod,
-            position: new Vector2(0,-5),
-        }); 
-
-        this.addChild(sprite);
-        
-
+        this.addChild(new Sprite({
+            resource: resources.images.rod
+        }))
     }
 
     ready(){
         events.on("HERO_POSITION", this, pos => {
-            console.log("HERO POSITION");
             const roundedHeroX = Math.round(pos.x);
             const roundedHeroY = Math.round(pos.y);
 
@@ -45,5 +32,6 @@ export class Rod extends GameObject{
 
     onCollideWithHero(){
         this.destroy();
+        events.emit("HERO_EXIT");
     }
 }
