@@ -24,7 +24,6 @@ export class Rod extends GameObject{
 
     ready(){
         events.on("HERO_POSITION", this, pos => {
-            console.log("HERO POSITION");
             const roundedHeroX = Math.round(pos.x);
             const roundedHeroY = Math.round(pos.y);
 
@@ -38,12 +37,16 @@ export class Rod extends GameObject{
 
             // Sprawdzenie, czy punkt (pozycja postaci) znajduje się w polygonie kratki
             if (gridCellPolygon.containsPoint([roundedHeroX, roundedHeroY])) {
+                events.emit("HERO PICK UPS ITEM")
                 this.onCollideWithHero();
             }
         });
     }
 
     onCollideWithHero(){
+        events.on("HERO PICK UPS ITEM", ()=> {
+            console.log("PICK UP")
+        })
         this.destroy();
     }
 }

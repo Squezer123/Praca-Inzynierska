@@ -6,7 +6,7 @@ export class Exit extends GameObject{
             position: new Vector2(x,y)
         });
         this.addChild(new Sprite({
-            resource: resources.images.rod
+            resource: resources.images.exit
         }))
     }
 
@@ -32,6 +32,6 @@ export class Exit extends GameObject{
 
     onCollideWithHero(){
         this.destroy();
-        events.emit("HERO_EXIT");
+        events.emit("CHANGE_LEVEL")
     }
 }

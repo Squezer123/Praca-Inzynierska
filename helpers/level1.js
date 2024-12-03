@@ -14,3 +14,14 @@ export const walls = [
         [44, 140]
     ]),
 ];
+
+
+import {Level} from "../objects/Level/Level.js";
+import {Sprite} from "../Sprite.js";
+import {resources} from "../Resources.js";
+import {Vector2} from "../Vector2.js";
+import {Exit} from "../objects/Exit/Exit.js";
+import {gridCells} from "./grid.js";
+import {Rod} from "../objects/Rod/Rod.js";
+import {Hero} from "../objects/Hero/Hero.js";
+

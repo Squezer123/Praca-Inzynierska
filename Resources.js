@@ -8,6 +8,7 @@ class Resources{
             rod: "/assets/rod.png",
             test: "/assets/test.png",
             skeleton: "/assets/skeleton.png",
+            exit: "/assets/exit.png",
         };
 
         this.images = {};

@@ -1,9 +1,9 @@
 import { GameObject } from '../../GameObject.js';
 import { 
-  Vector2, 
-  DOWN, 
-  LEFT, 
-  RIGHT, 
+  Vector2,
+  DOWN,
+  LEFT,
+  RIGHT,
   UP,
   resources,
   Sprite,
