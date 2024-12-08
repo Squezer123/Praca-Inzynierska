@@ -9,6 +9,7 @@ class Resources{
             test: "/assets/test.png",
             skeleton: "/assets/skeleton.png",
             exit: "/assets/exit.png",
+            caveGround: "/assets/cave-ground.png"
         };
 
         this.images = {};

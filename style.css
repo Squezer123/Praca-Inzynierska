@@ -25,3 +25,16 @@ canvas {
   width: 100%;
 
 }
+
+.Avatar{
+  position: absolute;
+  box-shadow: 2px;
+  top: 20px;
+  left: 20px;
+}
+ 
+.hp{
+  position: absolute;
+  top: 40px;
+  left: 130px;
+}

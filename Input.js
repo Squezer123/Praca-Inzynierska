@@ -29,6 +29,7 @@ export class Input {
 
     onArrowPressed(direction){
         if (this.heldDirections.indexOf(direction) === -1){this.heldDirections.unshift(direction)}
+        console.log(direction);
     }
     onArrowReleased(direction){
         const index = this.heldDirections.indexOf(direction);

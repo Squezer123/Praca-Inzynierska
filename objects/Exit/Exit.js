@@ -32,6 +32,6 @@ export class Exit extends GameObject{
 
     onCollideWithHero(){
         this.destroy();
-        events.emit("CHANGE_LEVEL")
+        events.emit("HERO_EXITS")
     }
 }

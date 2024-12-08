@@ -1,12 +1,15 @@
 import {
     Vector2,
     GameLoop,
-    events
+    events,
+    Sprite,
+    resources
 } from './Exporter.js';
 import { generateLevel } from './helpers/mapGenerator.js';
 import { mapDrawer } from './helpers/mapDrawer.js';
 import {Main} from "./objects/Main/Main.js";
 import {OutDoorLevel1} from "./levels/OutdoorLevel1.js";
+import { CaveLevel1 } from './levels/TestLevel.js';
 
 const canvas = document.querySelector("#GameCanvas");
 const ctx = canvas.getContext("2d");
@@ -23,12 +26,14 @@ var map = generateLevel(mapSize, 30, 4, 7);
 
 // mapDrawer(map, mapSize, mainScene);
 
-mainScene.setLevel(new OutDoorLevel1());
+mainScene.setLevel(new CaveLevel1());
 
 let startingRoomIndex = Math.floor(Math.random() * map.rooms.length);
 let {x, y} = map.rooms[startingRoomIndex];
 let helpX = x+3;
 let helpY = y+3;
+
+
 
 
 const update = (delta) => {

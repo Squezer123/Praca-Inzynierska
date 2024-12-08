@@ -10,7 +10,8 @@ export class Main extends GameObject{
 
     ready() {
         events.on("CHANGE_LEVEL", this, newLevelInstance => {
-            this.setLevel((newLevelInstance));
+            console.log("ZMIANA");
+            this.setLevel(newLevelInstance);
         })
     }
 
@@ -26,9 +27,7 @@ export class Main extends GameObject{
         this.level?.background.drawImage(ctx,0,0);
     }
 
-    drawLand(ctx){
-        this.level?.ground.drawImage(ctx,0,0);
-    }
+    
 
     drawForeground(ctx){
 
