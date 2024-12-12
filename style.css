@@ -23,7 +23,7 @@ html, body {
 
 canvas {
   width: 100%;
-
+  /*scale: 1.25;*/
 }
 
 .Avatar{

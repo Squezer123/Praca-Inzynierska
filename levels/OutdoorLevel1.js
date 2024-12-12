@@ -6,7 +6,10 @@ import {Exit} from "../objects/Exit/Exit.js";
 import {gridCells} from "../helpers/grid.js";
 import {Rod} from "../objects/Rod/Rod.js";
 import {Hero} from "../objects/Hero/Hero.js";
+import {Entrence} from "../objects/Entrence/Entrence.js";
 import { GameObject } from "../GameObject.js";
+import {events} from "../Events.js";
+import {CaveLevel1} from "./TestLevel.js";
 
 export class OutDoorLevel1 extends Level {
     constructor() {
@@ -23,8 +26,11 @@ export class OutDoorLevel1 extends Level {
 
         this.addChild(ground);
 
-        const exit = new Exit(gridCells(6), gridCells(4));
-        this.addChild(exit);
+        const entrence = new Entrence(gridCells(6), gridCells(4));
+        this.addChild(entrence);
+
+        // const exit = new Exit(gridCells(6), gridCells(4));
+        // this.addChild(exit);
 
         const rod = new Rod(gridCells(20+4), gridCells(20+2));
         this.addChild(rod);
@@ -32,5 +38,15 @@ export class OutDoorLevel1 extends Level {
         const hero = new Hero(gridCells(6), gridCells(6));
         this.addChild(hero);
     }
-    //...
+    ready() {
+        events.on("HERO_EXITS", this, ()=>{
+
+            events.emit("CHANGE_LEVEL", new OutDoorLevel1())
+        })
+
+        events.on("HERO_ENTERS", this, ()=>{
+
+            events.emit("CHANGE_LEVEL", new CaveLevel1())
+        })
+    }
 }
