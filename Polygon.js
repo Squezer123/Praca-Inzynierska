@@ -39,4 +39,6 @@ export const isPointInAnyPolygon = function (polygons, point) {
     return false;
 };
 
+
+
 export { Polygon };

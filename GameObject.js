@@ -1,4 +1,4 @@
-import { Vector2,events } from "./Exporter.js";
+import {Vector2, events, resources} from "./Exporter.js";
 
 export class GameObject {
     constructor({position}){
@@ -33,10 +33,17 @@ export class GameObject {
         const drawPosY = y + this.position.y;
 
         this.drawImage(ctx, drawPosX, drawPosY);
-
-        this.children.forEach(child => {
+        this.getDrawChildrenOrdered().forEach(child => {
             child.draw(ctx, drawPosX, drawPosY);
         });
+    }
+
+    getDrawChildrenOrdered(){
+        return [...this.children].sort((a,b)=>{
+            if(b.resource === resources.images.test)
+                return 1;
+            return a.position.y > b.position.y ? 1 : -1
+        })
     }
 
 

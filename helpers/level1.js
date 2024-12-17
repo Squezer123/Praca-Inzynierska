@@ -16,6 +16,8 @@ export const walls = [
 ];
 
 
+
+
 import {Level} from "../objects/Level/Level.js";
 import {Sprite} from "../Sprite.js";
 import {resources} from "../Resources.js";

@@ -120,7 +120,8 @@ export class Hero extends GameObject{
       
         // Check if the next position is a valid grid cell
       
-        if (!isPointInAnyPolygon(walls, [nextX, nextY])) {
+        if (isPointInAnyPolygon(walls, [nextX, nextY]) || isSpaceTaken([nextX, nextY])) {
+            console.log(this.position)
           this.destinationPosition.x = nextX;
           this.destinationPosition.y = nextY;
       }

@@ -23,4 +23,13 @@ export const WALK_RIGHT = makeAnimationFrames(20);
 export const WALK_LEFT = makeAnimationFrames(24);
 export const WALK_UP = makeAnimationFrames(28);
 
+export const NPC_STAND_DOWN = makeAnimationFrames(0);
+export const NPC_STAND_RIGHT = makeAnimationFrames(6);
+export const NPC_STAND_UP = makeAnimationFrames(12);
+export const NPC_STAND_LEFT = makeAnimationFrames(8);
+
+export const NPC_WALK_DOWN = makeAnimationFrames(16);
+export const NPC_WALK_RIGHT = makeAnimationFrames(20);
+export const NPC_WALK_LEFT = makeAnimationFrames(24);
+export const NPC_WALK_UP = makeAnimationFrames(28);
 
