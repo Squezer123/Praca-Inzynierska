@@ -39,6 +39,15 @@ export const isPointInAnyPolygon = function (polygons, point) {
     return false;
 };
 
+export const createPolygon = function (x,y,w,h=w){
+    return new Polygon([
+        [x, y],
+        [x + w, y],
+        [x + w, y + h],
+        [x, y + h]
+    ]);
+}
+
 
 
 export { Polygon };

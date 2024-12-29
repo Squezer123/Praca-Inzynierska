@@ -7,29 +7,49 @@ export class Input {
     constructor(){
 
         this.heldDirections = [];
+        this.keys = {};
+        this.lastKeys = {};
 
         document.addEventListener('keydown', (e) => {
-           if (e.key === 'w' || e.key === 'ArrowUp'){this.onArrowPressed(UP);}
-            if (e.key === 's'){this.onArrowPressed(DOWN);}
-            if (e.key === 'a'){this.onArrowPressed(LEFT);}
-            if (e.key === 'd'){this.onArrowPressed(RIGHT);}
+
+            this.keys[e.code] = true;
+
+            if (e.key === 'w' || e.key === 'ArrowUp' || e.key === 'W'){this.onArrowPressed(UP);}
+            if (e.key === 's' || e.key === 'S'){this.onArrowPressed(DOWN);}
+            if (e.key === 'a' || e.key === 'A'){this.onArrowPressed(LEFT);}
+            if (e.key === 'd' || e.key === 'D'){this.onArrowPressed(RIGHT);}
         });
 
         document.addEventListener('keyup', (e) => {
-            if (e.key === 'ArrowUp' || e.key === 'w'){this.onArrowReleased(UP);}
-            if (e.key === 'ArrowDown' || e.key === 's'){this.onArrowReleased(DOWN);}
-            if (e.key === 'ArrowLeft' || e.key === 'a'){this.onArrowReleased(LEFT);}
-            if (e.key === 'ArrowRight' || e.key === 'd'){this.onArrowReleased(RIGHT);}
+
+            this.keys[e.code] = false;
+
+            if (e.key === 'ArrowUp' || e.key === 'w' || e.key === 'W'){this.onArrowReleased(UP);}
+            if (e.key === 'ArrowDown' || e.key === 's' || e.key === 'S'){this.onArrowReleased(DOWN);}
+            if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A'){this.onArrowReleased(LEFT);}
+            if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D'){this.onArrowReleased(RIGHT);}
          });
     }
 
     get direction(){
         return this.heldDirections[0];
     }
+    update(){
+        this.lastKeys = {... this.keys};
+
+    }
+
+    getActionJustPressed(keyCode){
+        let justPressed = false;
+        if(this.keys[keyCode] && !this.lastKeys[keyCode]){
+            justPressed = true;
+        }
+        return justPressed;
+
+    }
 
     onArrowPressed(direction){
         if (this.heldDirections.indexOf(direction) === -1){this.heldDirections.unshift(direction)}
-        console.log(direction);
     }
     onArrowReleased(direction){
         const index = this.heldDirections.indexOf(direction);

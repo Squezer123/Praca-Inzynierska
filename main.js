@@ -16,28 +16,15 @@ const ctx = canvas.getContext("2d");
 ctx.imageSmoothingEnabled = false;
 ctx.scale(1.5, 1.5)
 
-
 const mainScene = new Main({
   position: new Vector2(0,0)
 })
 
-let mapSize = {x:100, y:100};
-var map = generateLevel(mapSize, 30, 4, 7);
-
-// mapDrawer(map, mapSize, mainScene);
-
 mainScene.setLevel(new CaveLevel1());
-
-let startingRoomIndex = Math.floor(Math.random() * map.rooms.length);
-let {x, y} = map.rooms[startingRoomIndex];
-let helpX = x+3;
-let helpY = y+3;
-
-
-
 
 const update = (delta) => {
   mainScene.stepEntry(delta, mainScene);
+  mainScene.input?.update();
 }
 
 const draw = () => {
@@ -55,5 +42,5 @@ const draw = () => {
 
 
 
-const gameLoop = new GameLoop(update, draw);
+export const gameLoop = new GameLoop(update, draw);
 gameLoop.start();

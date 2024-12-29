@@ -15,15 +15,25 @@ import {
   moveTowards,
   events  
 } from '../../Exporter.js';
+import {npcTaken} from "../../helpers/level1.js";
 
 export class Hero extends GameObject{
-    constructor(x,y){
+    constructor(x,y,name,role){
         super({
             position: new Vector2(x,y)
         });
+        this.name = name;
         this.facingDirection = DOWN;
         this.destinationPosition = this.position.duplicate();
+        this.hp = 100;
+        this.activeEffects = [];
+        this.maxHp = 100;
 
+        this.int = 10;
+        this.str = 10;
+        this.ag = 10;
+        this.class = role;
+        this.armor = 50;
         const shadow = new Sprite({
             resource: resources.images.shadow,
             frameSize: new Vector2(32,32),
@@ -50,12 +60,24 @@ export class Hero extends GameObject{
           
             }),
             position: new Vector2(-8,-20)
+
           })
           this.addChild(this.body);
     }
 
     step(delta, root){
-        
+
+        /** @type {Input} */
+        const input = root.input;
+        if(input?.getActionJustPressed("KeyE")){
+            let t = Math.random()
+            events.emit("HERO_REQUESTS_ACTION",this)
+        }
+        events.on("HERO_APPLY_EFFECTS", this, (effects) => {
+            this.applyEffect(effects.buff);
+            this.applyEffect(effects.debuff);
+        });
+
         const distance = moveTowards(this, this.destinationPosition, 1);
         const hasArrived = distance <= 1;
         if (hasArrived) {this.tryMove(root);}
@@ -120,12 +142,40 @@ export class Hero extends GameObject{
       
         // Check if the next position is a valid grid cell
       
-        if (isPointInAnyPolygon(walls, [nextX, nextY]) || isSpaceTaken([nextX, nextY])) {
-            console.log(this.position)
+        if (isPointInAnyPolygon(walls, [nextX, nextY]) && !isPointInAnyPolygon(npcTaken,[nextX,nextY])) {
+
           this.destinationPosition.x = nextX;
           this.destinationPosition.y = nextY;
       }
         
+    }
+    applyEffect(effect) {
+        this.activeEffects.push(effect);
+        this.updateStats();
+    }
+
+    removeEffect(effectName) {
+        this.activeEffects = this.activeEffects.filter(effect => effect.name !== effectName);
+        this.updateStats();
+    }
+
+    updateStats() {
+        for (const effect of this.activeEffects) {
+            if(!effect.added){
+                console.log('Dodano')
+                this.armor += effect.stats.armor;
+                this.ag += effect.stats.agility;
+                this.int += effect.stats.int;
+                this.str += effect.stats.strength;
+                this.maxHp += effect.stats.hp;
+                this.removeEffect(effect.name)
+                effect.added = true;
+            }
+
+        }
+
+        this.hp = Math.min(this.hp, this.maxHp);
+
     }
 
 }

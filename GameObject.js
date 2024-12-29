@@ -40,7 +40,7 @@ export class GameObject {
 
     getDrawChildrenOrdered(){
         return [...this.children].sort((a,b)=>{
-            if(b.resource === resources.images.test)
+            if(b.resource === resources.images.caveGround || b.resource === resources.images.caveGround2 || b.resource === resources.images.caveGround3)
                 return 1;
             return a.position.y > b.position.y ? 1 : -1
         })

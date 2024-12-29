@@ -6,19 +6,21 @@ import { OutDoorLevel1 } from "./OutdoorLevel1.js";
 import {generateLevel} from "../helpers/mapGenerator.js";
 import {mapDrawer} from "../helpers/mapDrawer.js";
 import {Npc} from "../objects/NPC/Npc.js";
+import {Buff} from "../objects/Buff/Buff.js";
 
 export class CaveLevel1 extends Level{
     constructor() {
         super({});
 
-        this.background = new Sprite({
-            resource: resources.images.sky,
-            frameSize: new Vector2(320,180)
-        })
+        // this.background = new Sprite({
+        //     resource: resources.images.caveSky,
+        //     frameSize: new Vector2(576,324),
+        //     scale: 0.5,
+        // })
 
 
         let mapSize = {x:100, y:100};
-        var map = generateLevel(mapSize, 30, 4, 7);
+        var map = generateLevel(mapSize, 30, 3, 5);
 
         mapDrawer(map, mapSize, this);
         console.log(map)
@@ -32,11 +34,14 @@ export class CaveLevel1 extends Level{
 
         const exit = new Exit(gridCells(exitX),gridCells(exitY))
         this.addChild(exit)
-        const hero = new Hero(gridCells(heroX), gridCells(heroY));
+        const hero = new Hero(gridCells(heroX), gridCells(heroY),"Bohater","Warrior");
         this.addChild(hero)
 
-        const npc = new Npc(gridCells(heroX+2), gridCells(heroY+2))
+        const npc = new Npc(gridCells(heroX+2), gridCells(heroY+2),"Skeleton","Warrior",10);
         this.addChild(npc)
+
+        const buff = new Buff(gridCells(heroX+1), gridCells(heroY+1),"Buff",5);
+        this.addChild(buff);
         let {x,y} = hero.position;
         x +=26;
         y +=20;
@@ -45,7 +50,7 @@ export class CaveLevel1 extends Level{
             [x+16, y],
             [x+16, y+16],
             [x, y+16]
-        ]),);
+        ]));
     }
 
     ready() {

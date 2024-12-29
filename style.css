@@ -19,16 +19,18 @@ html, body {
   padding: 0;
   overflow: hidden;
   image-rendering: pixelated;
+  background: black;
+  font-family: 'Press Start 2P', cursive;
 }
 
 canvas {
+
   width: 100%;
-  /*scale: 1.25;*/
+  scale: 1.25;
 }
 
 .Avatar{
   position: absolute;
-  box-shadow: 2px;
   top: 20px;
   left: 20px;
 }
@@ -37,4 +39,66 @@ canvas {
   position: absolute;
   top: 40px;
   left: 130px;
+}
+
+.battleContainer{
+  position: absolute;
+  z-index: 1000;
+  width: 100vw;
+  height: 100vh;
+  background-image:url("assets/Preview.png");
+  background-size: cover; /* Dopasowanie tła do kontenera */
+  background-repeat: no-repeat; /* Zapobiega powtarzaniu obrazu */
+  background-position: center;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  display: inline-block;
+  background: linear-gradient(145deg, #3c3f41, #2b2d30);
+  border-radius: 15px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  width: 300px;
+  height: 500px;
+  text-align: center;
+  padding: 15px;
+  color: #f0f0f0;
+  position: relative;
+  margin: 100px;
+}
+
+.card-header {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card-image img {
+  scale: 1.5;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.card-stats {
+  margin-top: 10px;
+}
+
+.health-bar {
+  background: #444;
+  border-radius: 5px;
+  height: 20px;
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+
+.health-fill {
+  background: linear-gradient(90deg, #ff5656, #ff0000);
+  height: 100%;
+  transition: width 0.3s ease;
 }

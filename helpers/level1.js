@@ -15,6 +15,8 @@ export const walls = [
     ]),
 ];
 
+export const npcTaken = [];
+
 
 
 
