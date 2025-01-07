@@ -10,6 +10,7 @@ import { mapDrawer } from './helpers/mapDrawer.js';
 import {Main} from "./objects/Main/Main.js";
 import {OutDoorLevel1} from "./levels/OutdoorLevel1.js";
 import { CaveLevel1 } from './levels/TestLevel.js';
+import {MainMenu} from "./MainMenu.js";
 
 const canvas = document.querySelector("#GameCanvas");
 const ctx = canvas.getContext("2d");
@@ -43,4 +44,5 @@ const draw = () => {
 
 
 export const gameLoop = new GameLoop(update, draw);
-gameLoop.start();
+let menu = new MainMenu();
+

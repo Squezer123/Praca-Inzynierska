@@ -20,10 +20,11 @@ export class CaveLevel1 extends Level{
 
 
         let mapSize = {x:100, y:100};
-        var map = generateLevel(mapSize, 30, 3, 5);
+        let map = generateLevel(mapSize, 30, 3, 5);
+        console.log(map)
 
         mapDrawer(map, mapSize, this);
-        console.log(map)
+
         let randomIndex = Math.floor(Math.random() * map.rooms.length);
         let heroX = map.rooms[randomIndex].x + 1;
         let heroY = map.rooms[randomIndex].y + 1;
