@@ -16,19 +16,22 @@ import {
   events  
 } from '../../Exporter.js';
 import {npcTaken} from "../../helpers/level1.js";
+import {SoundPlayer} from "../../Sound.js";
 
 export class Hero extends GameObject{
     constructor(x,y,name,role){
         super({
             position: new Vector2(x,y)
         });
+        this.sound = new SoundPlayer();
+        this.sound.setSource('../../assets/Sounds/step.mp3');
         this.name = name;
         this.facingDirection = DOWN;
         this.destinationPosition = this.position.duplicate();
         this.hp = 100;
         this.activeEffects = [];
         this.maxHp = 100;
-
+        this.playSound = true;
         this.int = 10;
         this.str = 10;
         this.ag = 10;
@@ -94,6 +97,7 @@ export class Hero extends GameObject{
 
 
     tryMove(root){
+        this.playSound = true;
         const {input} = root;
         if (!input.direction) {
           if (this.facingDirection === UP) {
@@ -143,9 +147,13 @@ export class Hero extends GameObject{
         // Check if the next position is a valid grid cell
       
         if (isPointInAnyPolygon(walls, [nextX, nextY]) && !isPointInAnyPolygon(npcTaken,[nextX,nextY])) {
+            this.destinationPosition.x = nextX;
+            this.destinationPosition.y = nextY;
+            if(this.playSound){
+                this.sound.play();
+                this.playSound = false;
+            }
 
-          this.destinationPosition.x = nextX;
-          this.destinationPosition.y = nextY;
       }
         
     }

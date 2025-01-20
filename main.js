@@ -1,14 +1,9 @@
 import {
     Vector2,
     GameLoop,
-    events,
-    Sprite,
-    resources
 } from './Exporter.js';
-import { generateLevel } from './helpers/mapGenerator.js';
-import { mapDrawer } from './helpers/mapDrawer.js';
+
 import {Main} from "./objects/Main/Main.js";
-import {OutDoorLevel1} from "./levels/OutdoorLevel1.js";
 import { CaveLevel1 } from './levels/TestLevel.js';
 import {MainMenu} from "./MainMenu.js";
 

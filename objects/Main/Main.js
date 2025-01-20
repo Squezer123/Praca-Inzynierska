@@ -1,6 +1,5 @@
 import {Camera, events, GameObject, Input, isPointInAnyPolygon} from "../../Exporter.js";
-import {createPolygon} from "../../Polygon.js";
-import {Npc} from "../NPC/Npc.js";
+
 import {gameLoop} from "../../main.js";
 import {Battle} from "../../Battle.js";
 
@@ -14,7 +13,6 @@ export class Main extends GameObject{
 
     ready() {
         events.on("CHANGE_LEVEL", this, newLevelInstance => {
-            console.log("ZMIANA");
             this.setLevel(newLevelInstance);
         })
         events.on("BATTLE_STARTS", this, (participants) => {

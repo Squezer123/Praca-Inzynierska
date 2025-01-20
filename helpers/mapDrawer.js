@@ -12,8 +12,8 @@ export function mapDrawer(map, mapSize, mainScene) {
                 switch (groundVariant) {
                     case 1: {
                         const ground1 = new Sprite({
-                            resource: resources.images.caveGround2,
-                            frameSize: new Vector2(18, 18),
+                            resource: resources.images.caveGround,
+                            frameSize: new Vector2(20, 20),
                             position: new Vector2(i * 16 + 7, j * 16)
                         });
                         mainScene.addChild(ground1);
@@ -21,8 +21,8 @@ export function mapDrawer(map, mapSize, mainScene) {
                     }
                     case 2: {
                         const ground2 = new Sprite({
-                            resource: resources.images.caveGround2,
-                            frameSize: new Vector2(18, 18),
+                            resource: resources.images.caveGround,
+                            frameSize: new Vector2(20, 20),
                             position: new Vector2(i * 16 + 7, j * 16)
                         });
                         mainScene.addChild(ground2);
@@ -30,8 +30,8 @@ export function mapDrawer(map, mapSize, mainScene) {
                     }
                     case 3: {
                         const ground3 = new Sprite({
-                            resource: resources.images.caveGround3,
-                            frameSize: new Vector2(18, 18),
+                            resource: resources.images.caveGround,
+                            frameSize: new Vector2(20, 20),
                             position: new Vector2(i * 16 + 7, j * 16)
                         });
                         mainScene.addChild(ground3);

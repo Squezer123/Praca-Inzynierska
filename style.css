@@ -14,15 +14,22 @@
 }
 
 
+
 html, body {
   margin: 0;
   padding: 0;
   overflow: hidden;
   image-rendering: pixelated;
   background: black;
-  font-family: 'Press Start 2P', cursive;
+  font-family: 'Press Start 2P', cursive; !important;
+  cursor: url("./assets/cursor_default.png"), default;
 }
-
+.Menu {
+  background-image: url('./assets/backgroundv3.png'); /* Ścieżka do obrazu */
+  background-size: cover; /* Dopasowanie do szerokości i wysokości */
+  background-repeat: no-repeat; /* Brak powtarzania obrazu */
+  background-position: center; /* Wycentrowanie obrazu */
+}
 canvas {
 
   width: 100%;

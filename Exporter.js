@@ -8,7 +8,7 @@ import { Camera } from "./Camera.js";
 import { moveTowards } from "./helpers/moveTowards.js";
 import { Vector2 } from "./Vector2.js";
 import { Sprite } from "./Sprite.js";
-import { resources } from "./resources.js";
+import { resources } from "./Assets.js";
 import * as heroAnimations from "./objects/Hero/heroAnimations.js";
 import { GameLoop } from './GameLoop.js';
 import { Animations } from './Animations.js';

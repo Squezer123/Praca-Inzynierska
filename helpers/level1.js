@@ -22,7 +22,7 @@ export const npcTaken = [];
 
 import {Level} from "../objects/Level/Level.js";
 import {Sprite} from "../Sprite.js";
-import {resources} from "../Resources.js";
+import {resources} from "../Assets.js";
 import {Vector2} from "../Vector2.js";
 import {Exit} from "../objects/Exit/Exit.js";
 import {gridCells} from "./grid.js";

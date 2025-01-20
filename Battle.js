@@ -10,15 +10,12 @@ export class Battle {
     }
 
     BattleSimulation() {
-        console.log(this.hero);
         let heroHp = this.hero.hp;
         let enemyHp = this.enemy.hp;
-        console.log(this.enemy, this.hero);
         if (this.firstAttacker !== null) {
             this.attacker = this.firstAttacker;
             this.firstAttacker = null;
         }
-        console.log(this.attacker);
 
         while (heroHp > 0 && enemyHp > 0) { // Continue until one is defeated
             const damage = this.Attack(this.attacker);
